@@ -1,15 +1,15 @@
-package com.sdxb;
+package com.sdxb.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EntityScan("com.sdxb.entity")
-@EnableEurekaClient
-public class UserApplication {
+@EnableEurekaServer
+public class EurekaApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class,args);
+        SpringApplication.run(EurekaApplication.class,args
+        );
     }
 }
