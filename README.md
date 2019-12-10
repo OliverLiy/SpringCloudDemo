@@ -1,2 +1,2 @@
 # SpringCloudDemo
-使用Eureka注册中心
+第一个SpringCloud项目
