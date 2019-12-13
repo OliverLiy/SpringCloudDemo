@@ -1,5 +1,6 @@
 package com.sdxb.admin.Controller;
 
+import com.sdxb.admin.Feign.UserFeignClient;
 import com.sdxb.admin.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -16,23 +17,11 @@ import java.util.List;
 @RequestMapping("/admin")
 public class adminController {
     @Autowired
-    private RestTemplate restTemplate;
+    private UserFeignClient userFeignClient;
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public User getuser(@PathVariable int id){
-        //使用服务名称代替IP地址
-        User user= restTemplate.getForObject("http://userservice/user/1",User.class);
+        //使用feign远程调用
+        User user= userFeignClient.findbyid(id);
         return user;
     }
-
-//    未使用ribbon
-//    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-//    public User getuser(@PathVariable int id){
-//        //修改前通过url调用微服务
-//        //User user= restTemplate.getForObject("http://127.0.0.1:9001/user/1",User.class);
-//        List<ServiceInstance> instances = discoveryClient.getInstances("user_service");
-//        ServiceInstance serviceInstance = instances.get(0);
-//        User user= restTemplate.getForObject("http://"+serviceInstance.getHost()+":"+serviceInstance.getPort()
-//                +"/user/1",User.class);
-//        return user;
-//    }
 }

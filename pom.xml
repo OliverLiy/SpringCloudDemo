@@ -12,6 +12,9 @@
         <module>user_service</module>
         <module>admin_service</module>
         <module>eureka_server</module>
+        <module>admin_service_hystrix_rest</module>
+        <module>admin_service_hystrix_feign</module>
+        <module>user_hystrix_turbine</module>
     </modules>
 
     <parent>

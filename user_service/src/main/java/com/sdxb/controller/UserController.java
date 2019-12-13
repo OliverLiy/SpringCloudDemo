@@ -21,6 +21,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User user(@PathVariable("id") int id){
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         User user = userMapper.selectbyid(id);
         user.setUsername(ip+":"+port);
         return user;
