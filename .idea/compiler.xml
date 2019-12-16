@@ -8,14 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="admin_service" />
         <module name="eureka_server" />
+        <module name="user_hystrix_turbine" />
+        <module name="admin_service_hystrix_feign" />
         <module name="user_service" />
+        <module name="admin_service_hystrix_rest" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="admin_service_hystrix_feign" target="1.8" />
-      <module name="admin_service_hystrix_rest" target="1.8" />
-      <module name="user_hystrix_turbine" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
