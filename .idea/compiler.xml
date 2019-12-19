@@ -2,25 +2,30 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="admin_service" />
         <module name="eureka_server" />
-        <module name="user_hystrix_turbine" />
         <module name="admin_service_hystrix_feign" />
+        <module name="user_hystrix_turbine" />
+        <module name="api_gataway_server" />
         <module name="user_service" />
         <module name="admin_service_hystrix_rest" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api_gateway_server" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SpringCloudDemo" options="-parameters" />
       <module name="admin_service" options="-parameters" />
       <module name="admin_service_hystrix_feign" options="-parameters" />
       <module name="admin_service_hystrix_rest" options="-parameters" />
+      <module name="api_gataway_server" options="-parameters" />
+      <module name="api_gateway_server" options="-parameters" />
       <module name="eureka_server" options="-parameters" />
       <module name="user_hystrix_turbine" options="-parameters" />
       <module name="user_service" options="-parameters" />

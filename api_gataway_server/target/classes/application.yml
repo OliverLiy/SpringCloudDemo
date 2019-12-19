@@ -1,0 +1,34 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: api-gateway-server
+  #配置SpringCloudGateway的路由
+  redis:
+    host: localhost
+    port: 6379
+  cloud:
+    gateway:
+      routes:
+        - id: user-service  #id是自定义的标识
+          #uri: http://127.0.0.1:9001  #当访问9090端口时，自动把ip和端口替换为此uri
+          uri: lb://userservice #根据微服务名称拉取请求路径
+          predicates:
+            - Path=/user/**  #自动匹配/user/**的路径
+          filters:
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@pathKeyResolver}'
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 3
+      discovery:
+        locator:
+          enabled: true #开启根据微服务名称自动转发
+          lower-case-service-id: true  #w微服务名称小写呈现
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+  instance:
+    prefer-ip-address: true
